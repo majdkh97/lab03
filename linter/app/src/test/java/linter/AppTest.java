@@ -4,11 +4,127 @@
 package linter;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+
+    @Test void linter(){
+        try {
+            System.out.println("No Errors");
+            FileReader reader = new FileReader("C:\\Users\\ONE BY ONE\\401ASAC\\lab03\\linter\\app\\src\\test\\resources\\noErrors.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n");
+    }
+
+    @Test void linter1(){
+        try {
+            System.out.println("One Errors");
+            FileReader reader = new FileReader("C:\\Users\\ONE BY ONE\\401ASAC\\lab03\\linter\\app\\src\\test\\resources\\oneError.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n");
+    }
+
+    @Test void linter2(){
+        try {
+            System.out.println("Few Errors");
+            FileReader reader = new FileReader("C:\\Users\\ONE BY ONE\\401ASAC\\lab03\\linter\\app\\src\\test\\resources\\fewErrors.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n");
+    }
+
+    @Test void linter3(){
+        try {
+            System.out.println("Many Errors");
+            FileReader reader = new FileReader("C:\\Users\\ONE BY ONE\\401ASAC\\lab03\\linter\\app\\src\\test\\resources\\manyErrors.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n");
+    }
+
+    @Test void linter4(){
+        try {
+            System.out.println("Empty File");
+            FileReader reader = new FileReader("C:\\Users\\ONE BY ONE\\401ASAC\\lab03\\linter\\app\\src\\test\\resources\\emptyFile.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        System.out.println("\n");
     }
 }

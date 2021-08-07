@@ -3,12 +3,29 @@
  */
 package linter;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        try {
+            FileReader reader = new FileReader("linter/app/src/main/resources/gates.js");
+            Scanner scanner = new Scanner(reader);
+            int line = 1;
+            while (scanner.hasNext()) {
+                String str = scanner.nextLine();
+                System.out.println(str);
+                if (str.isEmpty() || str.endsWith("{") || str.endsWith("}") || str.contains("if") || str.contains("else")) {
+                    line++;
+                } else if (!str.endsWith(";")) {
+                    System.out.println("Line " + line + ": Missing semicolon.");
+                    line++;
+                } else if (str.endsWith(";"))
+                    line++;
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
